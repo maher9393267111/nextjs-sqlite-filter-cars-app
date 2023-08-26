@@ -113,7 +113,7 @@ export function ModelSelect({ models, make, ...props }) {
     name: props.name,
   });
 
-  const { data } = useSWR("/api/models?make=" + make, {
+  const { data } = useSWR("nextjs-sqlite-filter-cars-app.vercel.app/api/models?make=" + make, {
     // dedupingInterval: -> not call again the same url within one minute
     dedupingInterval: 60000,
     onSuccess: (newValues) => {
