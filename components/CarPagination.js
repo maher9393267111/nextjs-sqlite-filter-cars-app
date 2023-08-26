@@ -6,6 +6,25 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 function CarPagination({ totalPages }) {
+
+  const MaterialUiLink = forwardRef(({ item, query, ...props }, ref) => (
+    <Link
+      legacyBehavior
+      href={{
+        pathname: "/cars",
+        query: { ...query, page: item.page },
+        ...props,
+      }}
+      shallow
+    >
+      <a ref={ref} {...props}></a>
+    </Link>
+  ));
+  
+
+
+
+
   const { query } = useRouter();
   return (
     <Pagination
@@ -26,16 +45,16 @@ function CarPagination({ totalPages }) {
 
 export default CarPagination;
 
-const MaterialUiLink = forwardRef(({ item, query, ...props }, ref) => (
-  <Link
-    legacyBehavior
-    href={{
-      pathname: "/cars",
-      query: { ...query, page: item.page },
-      ...props,
-    }}
-    shallow
-  >
-    <a ref={ref} {...props}></a>
-  </Link>
-));
+// const MaterialUiLink = forwardRef(({ item, query, ...props }, ref) => (
+//   <Link
+//     legacyBehavior
+//     href={{
+//       pathname: "/cars",
+//       query: { ...query, page: item.page },
+//       ...props,
+//     }}
+//     shallow
+//   >
+//     <a ref={ref} {...props}></a>
+//   </Link>
+// ));
